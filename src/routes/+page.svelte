@@ -1,6 +1,6 @@
 <script lang="ts">
-  import "./app.css";
-  import SideBarMenu from './lib/SideBarMenu.svelte';
+  import "../app.css";
+  import SideBarMenu from "$lib/SideBarMenu.svelte";
 
   let open = true;
 </script>
