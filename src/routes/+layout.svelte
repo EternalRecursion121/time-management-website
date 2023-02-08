@@ -1,9 +1,11 @@
-<script>
+<script lang="ts">
   import "../app.css";
   import SideBarMenu from "$lib/SideBarMenu.svelte";
 
   let open = true;
 </script>
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
 
 
 <div>

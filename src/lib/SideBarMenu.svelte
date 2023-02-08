@@ -24,7 +24,7 @@
 	</div>
 	<ul class="nav-list">
     <li>
-      <a href="#">
+      <a href="/day">
         <i class="bx bx-time-five"></i>
         <span class="links_name">Day</span>
       </a>
