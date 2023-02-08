@@ -36,7 +36,7 @@
       </a>
     </li>
 		<li>
-			<a href="#">
+			<a href="/tasks">
 				<i class='bx bx-task' ></i>
 				<span class="links_name">Tasks</span>
 			</a>
@@ -68,7 +68,6 @@
          </div>
          <i  on:click={() => signOut()} class='bx bx-log-out' id="log_out"></i>
       {:else}
-        {console.log($page.data)}
         <button on:click={() => signIn('google')} class="name hover:bg-blue-800">Log in</button>
       {/if}
      </li>
