@@ -212,7 +212,7 @@
   margin-right: 10px;
 }
 .sidebar li.profile .name{
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 400;
   color: #E4E9F7;
   white-space: nowrap;
