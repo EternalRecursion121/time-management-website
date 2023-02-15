@@ -101,7 +101,6 @@
                                 />
                             </div>
                         </div>
-
                         <div class="mt-5 sm:mt-5">
                             <label
                                 for="subtasks"
