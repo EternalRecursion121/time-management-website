@@ -6,7 +6,7 @@
     import AddTaskModal from "$lib/AddTaskModal.svelte";
     import TaskModal from "$lib/TaskModal.svelte";
 
-    // console.log($page.data);
+    console.log($page.data);
     let tasks: Array<Object>;
     async function getTasks() {
         try {
