@@ -38,28 +38,17 @@
     });
 
 
-    function formatDate(dateString: string | undefined, long=false) {
+    function formatDate(dateString: string | undefined) {
         if (dateString == undefined) return "";
-
-        if (long) {
-            const date = new Date(dateString);
-            return date.toLocaleDateString('en-GB', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-                hour: 'numeric',
-                minute: 'numeric'
-            });
-        } else {
-            const date = new Date(dateString);
-            return date.toLocaleDateString('en-GB', {
-                year: 'numeric',
-                month: 'short',
-                day: 'numeric',
-                hour: 'numeric',
-                minute: 'numeric'
-            });
-        }
+ 
+        const date = new Date(dateString);
+        return date.toLocaleDateString('en-GB', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric'
+        });
     }
 
     let showModal = false;
@@ -72,8 +61,8 @@
     // console.log(decode({token: $page.data.session.token}))
 </script>
 
-<div>
-    <div class="mt-2 mr-5">
+<div class="pt-16 mr-5">
+    <div>
         <table class="min-w-full divide-y divide-gray-200">
         <thead class="bg-gray-50">
             <tr>
@@ -101,16 +90,20 @@
                 {/each}
             {:else}
                 <div>Loading...</div>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
             {/if}
         </tbody>
         </table>
 
         {#if (selectedTask)}
-            <TaskModal task={selectedTask} on:close={closeModal} />
+            <TaskModal task={selectedTask} on:close={closeModal} on:delete={getTasks}/>
         {/if}
     </div>
     <button
-        class="mt-4 bg-slate-800 rounded p-1 hover:bg-slate-700 text-slate-200"
+        class="mt-4 bg-slate-800 rounded p-1 hover:bg-slate-700 text-slate-200 w-full"
         on:click={() => {
             showModal = true;
         }}>Add Task</button
