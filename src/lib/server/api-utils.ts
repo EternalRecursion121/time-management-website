@@ -10,10 +10,10 @@ type Task = {
   status?: string;
   priority?: number;
   tags?: string[];
-  estimated_duration?: number;
-  date_scheduled_for?: string;
+  estimatedDuration?: number;
+  dateScheduled?: string;
   deadline?: string;
-  date_completed?: string;
+  dateCompleted?: string;
   description?: string;
   attachments?: string[];
 }
@@ -25,10 +25,10 @@ type TaskData = {
   status?: string;
   priority?: number;
   tags?: string[];
-  estimated_duration?: number;
-  date_scheduled_for?: string;
+  estimatedDuration?: number;
+  dateScheduled?: string;
   deadline?: string;
-  date_completed?: string;
+  dateCompleted?: string;
   description?: string;
   attachments?: string[];
 }
@@ -45,10 +45,10 @@ export function constructTask(taskData: TaskData) {
 
   if (taskData.status !== undefined) task.status = taskData.status;
   if (taskData.priority !== undefined) task.priority = taskData.priority;
-  if (taskData.estimated_duration !== undefined) task.estimated_duration = taskData.estimated_duration;
-  if (taskData.date_scheduled_for !== undefined) task.date_scheduled_for = taskData.date_scheduled_for;
+  if (taskData.estimatedDuration !== undefined) task.estimatedDuration = taskData.estimatedDuration;
+  if (taskData.dateScheduledFor !== undefined) task.dateScheduledFor = taskData.dateScheduledFor;
   if (taskData.deadline !== undefined) task.deadline = taskData.deadline;
-  if (taskData.date_completed !== undefined) task.date_completed = taskData.date_completed;
+  if (taskData.dateCompleted !== undefined) task.dateCompleted = taskData.dateCompleted;
   if (taskData.description !== undefined) task.description = taskData.description;
 
   return task;
@@ -84,11 +84,13 @@ async function getTaskFileId(authorisation: string) {
 export async function retrieveTaskData(authorisation: string) {
     const taskFileId = await getTaskFileId(authorisation);
     if (taskFileId) {
-        return await (await fetch(`https://www.googleapis.com/drive/v3/files/${taskFileId}?alt=media`, {
+        const taskData = await (await fetch(`https://www.googleapis.com/drive/v3/files/${taskFileId}?alt=media`, {
             headers: {
                 'Authorization': authorisation
             }
         })).json();
+        return taskData
+
     } else {
         const boundary = `=========${Math.random().toString(36).slice(2, 11)}===`;
         const metadata = {

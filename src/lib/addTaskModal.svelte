@@ -55,6 +55,27 @@
         aria-labelledby="modal-headline"
     >
         <div>
+            <!--Create x button in top right of modal to close modal-->
+            <div class="absolute top-0 right-0 pt-4 pr-4">
+                <button
+                    on:click={() => (open = false)}
+                    class="text-gray-400 hover:text-gray-500 transition ease-in-out duration-150">
+                    <svg
+                        class="h-6 w-6"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12"
+                        ></path>
+                    </svg>
+                </button>
+            </div>
             <h3
                 class="mt-5 text-lg leading-6 font-medium text-gray-900"
                 id="modal-headline"
@@ -132,7 +153,6 @@
                                 />
                             </div>
                         </div>
-
                         <div class="mt-5 sm:mt-5">
                             <label
                                 for="priority"
@@ -181,16 +201,23 @@
                                 <div class="mr-4">
                                     <DateInput format="yyyy-MM-dd" bind:value={dueDate} />
                                 </div>
-                                <div>
-                                    <button on:click={()=>{dueDate=null}} class="bg-slate-800 rounded p-1 hover:bg-slate-700 text-slate-200">
-                                    Remove date
-                                    </button>
-                                </div>
+                                <button on:click={()=>{dueDate=null}} class="bg-slate-800 rounded p-1 hover:bg-slate-700 text-slate-200">
+                                Remove date
+                                </button>
                             </div>
                         </div>
                     </div>
-                    <button on:click={createTask} class="mt-4 bg-slate-800 rounded p-1 hover:bg-slate-700 text-slate-200">Create Task</button>
-                </form>
+                    <div class="mt-5 sm:mt-6">
+                        <span class="flex w-full rounded-md shadow-sm">
+                            <button
+                                type="button"
+                                class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-slate-800 text-base leading-6 font-medium text-white shadow-sm hover:bg-slate-700 focus:outline-none focus:border-slate-700 focus:shadow-outline-slate transition ease-in-out duration-150 sm:text-sm sm:leading-5"
+                                on:click={createTask}
+                            >
+                                Create Task
+                            </button>
+                        </span>
+                    </div>
             </div>
         </div>
     </div>

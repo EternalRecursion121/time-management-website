@@ -18,7 +18,7 @@
 
 
 <div>
-  <div class="bg-gradient-to-r from-[#8ea8d8] to-[#2d7e9e] w-screen h-screen">
+  <div class="bg-gradient-to-r from-[#8ea8d8] to-[#2d7e9e]">
     <SideBarMenu bind:open/>
     <div class="main-section" class:sidebar-open={open}>
       <slot />
