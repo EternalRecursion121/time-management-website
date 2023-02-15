@@ -3,7 +3,7 @@
     import { onMount } from "svelte";
     import { signIn } from "@auth/sveltekit/client";
 
-    import AddTaskModal from "$lib/AddTaskModall.svelte";
+    import AddTaskModal from "$lib/AddTaskModal.svelte";
     import TaskModal from "$lib/TaskModal.svelte";
 
     // console.log($page.data);
