@@ -1,6 +1,15 @@
 <script lang="ts">
   import "../app.css";
   import SideBarMenu from "$lib/SideBarMenu.svelte";
+  import { page } from '$app/stores';
+  import { signIn } from '@auth/sveltekit/client';
+  import { onMount } from 'svelte';
+
+  onMount(() => {
+    if ($page.data?.session?.error == "RefreshAccessTokenError") {
+      signIn('google');
+    }
+  });
 
   let open = true;
 </script>
