@@ -23,7 +23,8 @@
         if (dueDate) {
             dueDate.setDate(dueDate.getDate() + 1);
             dueDate.setHours(0, 0, 0, 0);
-            taskData.deadline = dueDate; 
+            taskData.deadline = dueDate.toISOString(); 
+            console.log(taskData.deadline)
         }
 
 
@@ -55,8 +56,7 @@
         aria-labelledby="modal-headline"
     >
         <div>
-            <!--Create x button in top right of modal to close modal-->
-            <div class="absolute top-0 right-0 pt-4 pr-4">
+            <div class="absolute top-0 right-0 pt-4 pr-4"> 
                 <button
                     on:click={() => (open = false)}
                     class="text-gray-400 hover:text-gray-500 transition ease-in-out duration-150">
@@ -221,3 +221,53 @@
         </div>
     </div>
 </div>
+<!-- 
+<div class="transition-opacity">
+  <div class="absolute inset-0 bg-gray-500 opacity-50" />
+
+  <div class="bg-white rounded-lg px-16 pt-5 pb-4 overflow-visible shadow-xl transform transition-all sm:max-w-lg sm:w-full"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-headline">
+    <div>
+      <div class="absolute top-0 right-0 pt-4 pr-4">
+        <button on:click={() => (open = false)} class="text-gray-400 hover:text-gray-500 transition ease-in-out duration-150">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      <h3 class="mt-5 text-lg leading-6 font-medium text-gray-900" id="modal-headline">Create Task</h3>
+      <form>
+        <div class="mt-5 sm:mt-5">
+          <label for="title" class="block text-sm font-medium leading-5 text-gray-700">Title</label>
+          <div class="mt-1 rounded-md shadow-sm">
+            <input id="title" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" on:input={(e) => (title = e.target.value)} />
+          </div>
+        </div>
+        <div class="mt-5 sm:mt-5">
+          <label for="subtasks" class="block text-sm font-medium leading-5 text-gray-700">Subtasks</label>
+          <div class="subtask-fields mt-1">
+            <div class="subtask-field">
+              <input class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" on:input={(e) => (subtasks[0] = e.target.value)} />
+            </div>
+          </div>
+          <button type="button" class="add-subtask-button bg-gray-300 px-2 py-1 rounded" on:click={() => subtasks.push('')}>
+            Add Subtask
+          </button>
+        </div>
+        <div class="mt-5 sm:mt-5">
+          <label for="metrics" class="block text-sm font-medium leading-5 text-gray-700">Metrics</label>
+          <div class="metric-fields mt-1">
+            <div class="metric-field">
+              <input class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" on:input={(e) => (metrics[0] = e.target.value)} />
+            </div>
+          </div>
+          <button type="button" class="add-metric-button bg-gray-300 px-2 py-1 rounded" on:click={() => metrics.push('')}>
+            Add Metric
+          </button>
+       </div>
+      </form>
+    </div>
+  </div>
+</div> -->

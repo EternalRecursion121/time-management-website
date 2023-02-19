@@ -2,54 +2,66 @@ import { error } from '@sveltejs/kit';
 import { auth } from 'google-auth-library';
 import { v4 as uuid4} from 'uuid';
 
-type Task = {
-  id: string,
-  title?: string;
-  subtasks?: string[];
-  metrics?: Record<string, any>;
-  status?: string;
-  priority?: number;
-  tags?: string[];
-  estimatedDuration?: number;
-  dateScheduled?: string;
-  deadline?: string;
-  dateCompleted?: string;
-  description?: string;
-  attachments?: string[];
-}
+// type Task = {
+//   id: string,
+//   title?: string;
+//   subtasks?: string[];
+//   dependencies?: string[];
+//   metrics?: Record<string, any>;
+//   status?: string;
+//   priority?: number;
+//   tags?: string[];
+//   estimatedDuration?: number;
+//   dateScheduled?: string;
+//   deadline?: string;
+//   dateCompleted?: string;
+//   description?: string;
+//   attachments?: string[];
+// }
 
-type TaskData = {
-  title?: string;
-  subtasks?: string[];
-  metrics?: Record<string, any>;
-  status?: string;
-  priority?: number;
-  tags?: string[];
-  estimatedDuration?: number;
-  dateScheduled?: string;
-  deadline?: string;
-  dateCompleted?: string;
-  description?: string;
-  attachments?: string[];
-}
+// type TaskData = {
+//   title?: string;
+//   subtasks?: string[];
+//   dependencies?: string[];
+//   metrics?: Record<string, any>;
+//   status?: string;
+//   priority?: number;
+//   tags?: string[];
+//   estimatedDuration?: number;
+//   dateScheduled?: string;
+//   deadline?: string;
+//   dateCompleted?: string;
+//   description?: string;
+//   attachments?: string[];
+// }
 
-export function constructTask(taskData: TaskData) {
-  const task: Task = {
+// export function constructTask(taskData: TaskData) {
+//   const task: Task = {
+//     id: uuid4(),
+//     title: taskData.title || "Unnamed Task",
+//     subtasks: taskData.subtasks || [],
+//     dependencies: taskData.dependencies || [],
+//     metrics: taskData.metrics || {},
+//     tags: taskData.tags || [],
+//     attachments: taskData.attachments || []
+//   };
+
+//   if (taskData.status !== undefined) task.status = taskData.status;
+//   if (taskData.priority !== undefined) task.priority = taskData.priority;
+//   if (taskData.estimatedDuration !== undefined) task.estimatedDuration = taskData.estimatedDuration;
+//   if (taskData.dateScheduledFor !== undefined) task.dateScheduledFor = taskData.dateScheduledFor;
+//   if (taskData.deadline !== undefined) task.deadline = taskData.deadline;
+//   if (taskData.dateCompleted !== undefined) task.dateCompleted = taskData.dateCompleted;
+//   if (taskData.description !== undefined) task.description = taskData.description;
+
+//   return task;
+// }
+
+export function constructTask(taskData: Object) {
+  const task = {
     id: uuid4(),
-    title: taskData.title || "Unnamed Task",
-    subtasks: taskData.subtasks || [],
-    metrics: taskData.metrics || {},
-    tags: taskData.tags || [],
-    attachments: taskData.attachments || []
+    ...taskData
   };
-
-  if (taskData.status !== undefined) task.status = taskData.status;
-  if (taskData.priority !== undefined) task.priority = taskData.priority;
-  if (taskData.estimatedDuration !== undefined) task.estimatedDuration = taskData.estimatedDuration;
-  if (taskData.dateScheduledFor !== undefined) task.dateScheduledFor = taskData.dateScheduledFor;
-  if (taskData.deadline !== undefined) task.deadline = taskData.deadline;
-  if (taskData.dateCompleted !== undefined) task.dateCompleted = taskData.dateCompleted;
-  if (taskData.description !== undefined) task.description = taskData.description;
 
   return task;
 }

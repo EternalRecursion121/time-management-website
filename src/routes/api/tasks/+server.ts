@@ -31,7 +31,26 @@ export const POST = async ({ request }) => {
   taskList.push(task);
   
   const response = await uploadTaskData(authorisation, taskList);
+  if (response.status !== 200) {
+    return response;
+  }
 
-  return response;
+  // if (task.dateScheduled && task.estimatedDuration) {
+  //   fetch('https://www.googleapis.com/calendar/v3/calendars/primary/events',
+  //     {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //         'Authorization': authorisation
+  //       },
+  //       body: JSON.stringify({
+  //         summary: `task.title`,
+  //         description: `task.description`,
+  //         start: {
+  //           dateTime: task.dateScheduled,
+               
+  //     });
+  // };
+
 
 }
