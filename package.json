@@ -31,6 +31,7 @@
 	"dependencies": {
 		"@auth/core": "^0.4.0",
 		"@auth/sveltekit": "^0.2.1",
+<<<<<<< Updated upstream
 		"@fullcalendar/core": "^6.1.4",
 		"@fullcalendar/daygrid": "^6.1.4",
 		"@fullcalendar/interaction": "^6.1.4",
@@ -38,6 +39,21 @@
 		"date-picker-svelte": "^2.2.5",
 		"googleapis": "^111.0.0",
 		"uuid": "^9.0.0",
+=======
+		"@fullcalendar/common": "^5.11.4",
+		"@fullcalendar/core": "^6.1.4",
+		"@fullcalendar/daygrid": "^6.1.4",
+		"@fullcalendar/google-calendar": "^6.1.4",
+		"@fullcalendar/interaction": "^6.1.4",
+		"@fullcalendar/list": "^6.1.4",
+		"@fullcalendar/moment": "^6.1.4",
+		"@fullcalendar/rrule": "^6.1.4",
+		"@fullcalendar/scrollgrid": "^6.1.4",
+		"@fullcalendar/timegrid": "^6.1.4",
+		"googleapis": "^111.0.0",
+		"install": "^0.13.0",
+		"npm": "^9.6.1",
+>>>>>>> Stashed changes
 		"vercel": "^28.15.2"
 	}
 }
