@@ -24,7 +24,7 @@
 
 <div>
   <div class="bg-gradient-to-r from-[#8ea8d8] to-[#2d7e9e]">
-    <SideBarMenu bind:open/>
+    <SideBarMenu app={app} bind:open/>
     <div class="main-section" class:sidebar-open={open}>
       <slot />
     </div>

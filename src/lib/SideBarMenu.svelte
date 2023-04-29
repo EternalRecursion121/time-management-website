@@ -1,9 +1,16 @@
 <script lang="ts">
-	import { signIn, signOut } from '@auth/sveltekit/client';
+  import type { FirebaseApp } from 'firebase/app';
+  import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 	import { page } from '$app/stores';
 
-
+  export let app: FirebaseApp;
   export let open = true;
+
+  const auth = getAuth(app);
+  const provider = new GoogleAuthProvider();
+
+  provider.addScope('https://www.googleapis.com/auth/calendar');
+
 	function menu_btn_click() {
 		let sidebar = document.querySelector(".sidebar")!;
 		let toggleBtn = document.querySelector("#btn")!;
@@ -16,6 +23,35 @@
       open = false;
 		}
 	}
+
+  function signIn() {
+    console.log("CALLED")
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        // The signed-in user info.
+        const user = result.user;
+        console.log(user);
+        // IdP data available using getAdditionalUserInfo(result)
+        // ...
+      }).catch((error) => {
+        console.log("ERROR")
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        // ...
+    });
+  }
+
+  function signOut() {
+    auth.signOut();
+  }
 </script>
 
 <div class="sidebar" class:open>
@@ -66,9 +102,9 @@
               <div class="name">{$page.data.session.user.name ?? "User"}</div>
             {/if}
          </div>
-         <i  on:click={() => signOut()} class='bx bx-log-out' id="log_out"></i>
+         <i on:click={() => signOut()} class='bx bx-log-out' id="log_out"></i>
       {:else}
-        <button on:click={() => signIn('google')} class="name hover:bg-blue-800">Log in</button>
+        <button on:click={() => signIn()} class="name hover:bg-blue-800">Log in</button>
       {/if}
      </li>
 	</ul>

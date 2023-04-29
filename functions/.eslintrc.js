@@ -25,8 +25,10 @@ module.exports = {
     "import",
   ],
   rules: {
-    "quotes": ["error", "double"],
+    "quotes": ["warn", "double"],
     "import/no-unresolved": 0,
-    "indent": ["error", 2],
+    "indent": ["warn", 2],
+    "max-len": ["warn", {"code": 120}], // Increase max line length to 120
+    "@typescript-eslint/no-var-requires": "off", // Allow require statements
   },
 };
