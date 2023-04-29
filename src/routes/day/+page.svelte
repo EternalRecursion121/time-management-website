@@ -9,6 +9,7 @@
     import scrollgridPlugin from '@fullcalendar/scrollgrid';
 
     import { onMount } from 'svelte';
+    import timegrid from '@fullcalendar/timegrid';
 
     onMount(() => {
         const calendar = new Calendar(document.querySelector('.calendar'), {
@@ -31,12 +32,29 @@
                     });
                 }
             },
+            initialView: 'timeGrid',
+            views: {
+                timeGrid: {
+                    type: timegrid,
+                    duration: { days: 1 },
+                },
+                jeff: {
+                    type: timegrid,
+                    duration: { days: 3 },
+                }
+            }
         });
         calendar.render();
     });
 </script>
 
-<div class="calendar max-w-full pr-10 max-h-screen"></div>
+<div class="h-screen flex flex-col">
+    <div class="flex flex-row">
+        <div class="calendar max-w-full max-h-full w-[80%]"></div>
+        <div class="outline outline-1 m-0 p-0 w-[20%]">Tasks</div>
+    </div>
+    <div class="outline outline-gray-900 outline-1 h-8 p-2 col-span-2">HELLO</div>
+</div>
 
 <style lang="postcss">
     :root {

@@ -1,7 +1,6 @@
 <script lang="ts">
     import { page } from "$app/stores";
     import { onMount } from "svelte";
-    import { signIn } from "@auth/sveltekit/client";
 
     import AddTaskModal from "$lib/AddTaskModal.svelte";
     import TaskModal from "$lib/TaskModal.svelte";
