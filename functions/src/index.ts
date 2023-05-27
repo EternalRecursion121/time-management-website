@@ -1,20 +1,19 @@
-import * as functions from "firebase-functions";
+/**
+ * Import function triggers from their respective submodules:
+ *
+ * import {onCall} from "firebase-functions/v2/https";
+ * import {onDocumentWritten} from "firebase-functions/v2/firestore";
+ *
+ * See a full list of supported triggers at https://firebase.google.com/docs/functions
+ */
 
-// // Start writing functions
-// // https://firebase.google.com/docs/functions/typescript
-//
-// export const helloWorld = functions.https.onRequest((request, response) => {
-//   functions.logger.info("Hello logs!", {structuredData: true});
+import {onRequest} from "firebase-functions/v2/https";
+import * as logger from "firebase-functions/logger";
+
+// Start writing functions
+// https://firebase.google.com/docs/functions/typescript
+
+// export const helloWorld = onRequest((request, response) => {
+//   logger.info("Hello logs!", {structuredData: true});
 //   response.send("Hello from Firebase!");
 // });
-
-let ssrServerServer: functions.HttpsFunction;
-exports.ssrServer = functions.region("us-central1").https.onRequest(async (request, response) => {
-    if (!ssrServerServer) {
-        functions.logger.info("Initialising SvelteKit SSR entry");
-        ssrServerServer = require("./ssrServer/index").default;
-        functions.logger.info("SvelteKit SSR entry initialised!");
-    }
-    functions.logger.info("Requested resource: " + request.originalUrl);
-    return ssrServerServer(request, response);
-});
