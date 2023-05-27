@@ -9,7 +9,6 @@
     import scrollgridPlugin from '@fullcalendar/scrollgrid';
     import { onMount } from 'svelte';
     import timegrid from '@fullcalendar/timegrid';
-    
     onMount(() => {
         const calendar = new Calendar(document.querySelector('.calendar'), {
             plugins: [

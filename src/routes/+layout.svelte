@@ -1,15 +1,20 @@
 <script lang="ts">
   import "../app.css";
   import SideBarMenu from "$lib/SideBarMenu.svelte";
-  import { page } from '$app/stores';
-  import { signIn } from '@auth/sveltekit/client';
-  import { onMount } from 'svelte';
 
-  onMount(() => {
-    if ($page.data?.session?.error == "RefreshAccessTokenError") {
-      signIn('google');
-    }
-  });
+  import { initializeApp } from "firebase/app";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAjTBdENK1YglNr_VBCPe_aD6jXb8OsuwY",
+    authDomain: "personal-science-48652.firebaseapp.com",
+    projectId: "personal-science-48652",
+    storageBucket: "personal-science-48652.appspot.com",
+    messagingSenderId: "911666724518",
+    appId: "1:911666724518:web:ea43e0dbaca69621163e67",
+    measurementId: "G-NSB8VPRXN2"
+  };
+
+  const app = initializeApp(firebaseConfig);
 
   let open = true;
 </script>
