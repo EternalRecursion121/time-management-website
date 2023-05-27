@@ -32,7 +32,7 @@
     onMount(async () => {
         await getTasks();
         let taskDisplayConfig = window.localStorage.getItem('taskDisplayConfig') ?? {
-            fields: ["title", "description", "priority", "dateScheduled", "deadline"]
+            fields: ["title", "description", "priority", "deadline"]
         };
     });
 

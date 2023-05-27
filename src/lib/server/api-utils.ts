@@ -19,21 +19,20 @@ import { v4 as uuid4} from 'uuid';
 //   attachments?: string[];
 // }
 
-// type TaskData = {
-//   title?: string;
-//   subtasks?: string[];
-//   dependencies?: string[];
-//   metrics?: Record<string, any>;
-//   status?: string;
-//   priority?: number;
-//   tags?: string[];
-//   estimatedDuration?: number;
-//   dateScheduled?: string;
-//   deadline?: string;
-//   dateCompleted?: string;
-//   description?: string;
-//   attachments?: string[];
-// }
+type TaskData = {
+  title?: string;
+  subtasks?: string[];
+  dependencies?: string[];
+  metrics?: Record<string, any>;
+  status?: string;
+  priority?: number;
+  tags?: string[];
+  estimatedDuration?: number;
+  deadline?: string;
+  dateCompleted?: string;
+  description?: string;
+  attachments?: string[];
+}
 
 // export function constructTask(taskData: TaskData) {
 //   const task: Task = {

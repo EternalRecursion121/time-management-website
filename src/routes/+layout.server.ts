@@ -6,6 +6,6 @@ import { dev } from '$app/environment';
 export const load: LayoutServerLoad = async (event) => {
   return {
     session: await event.locals.getSession(),
-    token: await decode({token:  event.cookies.get(dev ? "next-auth.session-token": "__Secure-next-auth.session-token"), secret:AUTH_SECRET})
+    token: await decode({token:  event.cookies.get(dev ? "next-auth.session-token": "__Secure-next-auth.session-token"), secret:AUTH_SECRET}).catch(() => null)
   }
 }
